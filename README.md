@@ -2,7 +2,7 @@
 ### 🧠 Sway Workflow – “Opinionated Workspaces”
 
 **Purpose**
-A modular, named-workspace configuration for SwayFX.
+A modular, named-workspace configuration for Sway.
 Each workspace is opinionated, that is, each app opens to one workspace, on one monitor.
 The hope is for zero-friction context-switching.
 
