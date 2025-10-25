@@ -1,5 +1,5 @@
 
-### 🧠 SwayFX Workflow – “Opinionated Workspaces”
+### 🧠 Sway Workflow – “Opinionated Workspaces”
 
 **Purpose**
 A modular, named-workspace configuration for SwayFX.
