@@ -1,12 +1,12 @@
 
 ### 🧠 Sway Workflow – “Opinionated Workspaces”
 
-**Purpose**
+**Purpose**<br>
 A modular, named-workspace configuration for Sway.
 Each workspace is opinionated, that is, each app opens to one workspace, on one monitor.
 The hope is for zero-friction context-switching.
 
-**ToDos**
+**ToDos**<br>
 Make my Waybar into something useful
 
 ---
