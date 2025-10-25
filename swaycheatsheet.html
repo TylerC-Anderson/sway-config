@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sway + Vim Cheat Sheet</title>
+<style>
+  @page { size: Letter landscape; margin: 0.35in; }
+  body {
+    font-family: "Maple Mono", "Maple Mono NF", "JetBrains Mono", monospace;
+    font-size: 14pt;
+    line-height: 1.4;
+    color: var(--text-normal);
+    background: var(--background-primary);
+  }
+  h1, h2 {
+    margin: 0.4em 0 0.2em;
+  }
+  h1 {
+    text-align: center;
+    font-size: 22pt;
+  }
+  .container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+  }
+  .col {
+    flex: 1;
+    min-width: 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 0.8em;
+  }
+  th, td {
+    padding: 4px 8px;
+    text-align: left;
+    border-bottom: 1px solid #7774;
+  }
+  th {
+    font-weight: bold;
+  }
+  code {
+    background: #3332;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-size: 0.95em;
+  }
+  hr {
+    border: none;
+    height: 1px;
+    background: #7774;
+    margin: 10px 0;
+  }
+</style>
+</head>
+<body>
+
+<h1>🪟 Sway + 🧠 Vim Cheat Sheet</h1>
+
+<div class="container">
+
+  <div class="col">
+    <h2>🧭 Basics</h2>
+    <table>
+      <tr><th>Action</th><th>Keys</th></tr>
+      <tr><td>Launch Terminal</td><td><code>Mod + Return</code></td></tr>
+      <tr><td>App Launcher (Wofi)</td><td><code>Mod + Space</code></td></tr>
+      <tr><td>Reload Config</td><td><code>Mod + Shift + Ctrl + C</code></td></tr>
+      <tr><td>Kill Focused Window</td><td><code>Mod + Q</code></td></tr>
+      <tr><td>Kill Workspace Windows</td><td><code>Mod + Ctrl + Shift + Q</code></td></tr>
+      <tr><td>Logout / Power Menu</td><td><code>Mod + Shift + E</code></td></tr>
+      <tr><td>File Explorer (Nautilus)</td><td><code>Mod + E</code></td></tr>
+    </table>
+
+    <h2>🧩 Window Focus & Movement</h2>
+    <table>
+      <tr><th>Action</th><th>Keys</th></tr>
+      <tr><td>Focus (Vim-style)</td><td><code>Mod + H/J/K/L</code></td></tr>
+      <tr><td>Move Window (Vim-style)</td><td><code>Mod + Shift + H/J/K/L</code></td></tr>
+    </table>
+
+    <h2>📐 Resize Mode</h2>
+    <p>Enter resize mode: <code>Mod + +</code></p>
+    <table>
+      <tr><th>Action</th><th>Keys</th></tr>
+      <tr><td>Shrink Width</td><td><code>H</code> / <code>←</code></td></tr>
+      <tr><td>Grow Width</td><td><code>L</code> / <code>→</code></td></tr>
+      <tr><td>Shrink Height</td><td><code>K</code> / <code>↑</code></td></tr>
+      <tr><td>Grow Height</td><td><code>J</code> / <code>↓</code></td></tr>
+      <tr><td>Exit Resize Mode</td><td><code>Return</code> / <code>Escape</code></td></tr>
+    </table>
+
+    <h2>📸 Screenshots & Clipboard</h2>
+    <table>
+      <tr><th>Action</th><th>Keys</th></tr>
+      <tr><td>Flameshot GUI Screenshot</td><td><code>Mod + Shift + Ctrl + S</code></td></tr>
+      <tr><td>Copy from Clipboard History</td><td><code>Mod + Alt + V</code></td></tr>
+      <tr><td>Instant Screenshot (grim)</td><td><code>Print</code></td></tr>
+    </table>
+  </div>
+
+  <div class="col">
+    <h2>🗂 Workspaces</h2>
+    <table>
+      <tr><th>Workspace</th><th>Switch</th><th>Move Window</th></tr>
+      <tr><td>left</td><td><code>Mod + A</code></td><td><code>Mod + Shift + A</code></td></tr>
+      <tr><td>ref</td><td><code>Mod + R</code></td><td><code>Mod + Shift + R</code></td></tr>
+      <tr><td>brws</td><td><code>Mod + B</code></td><td><code>Mod + Shift + B</code></td></tr>
+      <tr><td>midl</td><td><code>Mod + S</code></td><td><code>Mod + Shift + S</code></td></tr>
+      <tr><td>note</td><td><code>Mod + N</code></td><td><code>Mod + Shift + N</code></td></tr>
+      <tr><td>code</td><td><code>Mod + V</code></td><td><code>Mod + Shift + V</code></td></tr>
+      <tr><td>rsrch</td><td><code>Mod + X</code></td><td><code>Mod + Shift + X</code></td></tr>
+      <tr><td>vm</td><td><code>Mod + Z</code></td><td><code>Mod + Shift + Z</code></td></tr>
+      <tr><td>wtch</td><td><code>Mod + W</code></td><td><code>Mod + Shift + W</code></td></tr>
+      <tr><td>rght</td><td><code>Mod + D</code></td><td><code>Mod + Shift + D</code></td></tr>
+      <tr><td>chat</td><td><code>Mod + C</code></td><td><code>Mod + Shift + C</code></td></tr>
+      <tr><td>llm</td><td><code>Mod + T</code></td><td><code>Mod + Shift + T</code></td></tr>
+    </table>
+
+    <h2>🪄 Misc</h2>
+    <table>
+      <tr><th>Action</th><th>Keys</th></tr>
+      <tr><td>Enter Resize Mode</td><td><code>Mod + plus</code></td></tr>
+      <tr><td>Floating Modifier (Move/Resize Windows)</td><td>Hold <code>Mod</code> + Mouse</td></tr>
+    </table>
+  </div>
+</div>
+
+<hr>
+
+<h2 style="text-align:center;">🧠 Vim Starter Keybinds</h2>
+<table>
+  <tr><th>Mode</th><th>Action</th><th>Keys</th></tr>
+  <tr><td>Normal</td><td>Move Left / Down / Up / Right</td><td><code>h</code> / <code>j</code> / <code>k</code> / <code>l</code></td></tr>
+  <tr><td>Normal</td><td>Enter Insert Mode</td><td><code>i</code> (before) / <code>a</code> (after) / <code>o</code> (new line)</td></tr>
+  <tr><td>Normal</td><td>Delete Word / Line</td><td><code>dw</code> / <code>dd</code></td></tr>
+  <tr><td>Normal</td><td>Copy &amp; Paste</td><td><code>yy</code> / <code>p</code></td></tr>
+  <tr><td>Normal</td><td>Undo / Redo</td><td><code>u</code> / <code>Ctrl + r</code></td></tr>
+  <tr><td>Normal</td><td>Search / Next / Previous</td><td><code>/word</code> / <code>n</code> / <code>N</code></td></tr>
+  <tr><td>Normal</td><td>Save &amp; Quit</td><td><code>:w</code> / <code>:q</code> / <code>:wq</code> / <code>:q!</code></td></tr>
+  <tr><td>Visual</td><td>Select Text</td><td><code>v</code> (char) / <code>V</code> (line) / <code>Ctrl + v</code> (block)</td></tr>
+  <tr><td>Command</td><td>Find &amp; Replace</td><td><code>:%s/old/new/g</code></td></tr>
+</table>
+
+</body>
+</html>
