@@ -7,7 +7,7 @@ Each workspace is opinionated, that is, each app opens to one workspace, on one 
 The hope is for zero-friction context-switching.
 
 **ToDos**
-Make Waybar into something useful
+Make my Waybar into something useful
 
 ---
 
@@ -21,15 +21,14 @@ Make Waybar into something useful
 
 **Dependencies**
 
-* `swayfx` (blur / rounded corners)
-* `waybar`
-* `wofi`
-* `cliphist`
-* `flameshot` (optional screenshots)
-* `autotiling-rs`
-* `brightnessctl`, `pactl`
-* `maple mono nf` for a pretty font: https://github.com/subframe7536/Maple-font
-* `jq` (if you later add scripting helpers)
+* [SwayFX](https://github.com/WillPower3309/swayfx) (blur / rounded corners)
+* [waybar](https://github.com/Alexays/Waybar)
+* [wofi](https://github.com/SimplyCEO/wofi)
+* [cliphist](https://github.com/sentriz/cliphist)
+* [flameshot](https://github.com/flameshot-org/flameshot)
+* [autotiling-rs](https://github.com/ammgws/autotiling-rs)
+* [brightnessctl](https://github.com/Hummer12007/brightnessctl), `pactl`
+* [Maple Mono Nerd Font](https://github.com/subframe7536/maple-font) by subframe7536 for a pretty font
 
 ---
 
