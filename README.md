@@ -56,5 +56,5 @@ You can extend this pattern endlessly without touching the root `config`.
 
 ---
 
-**Credits**
+**Credits**<br>
 Themeing/rice credit goes to [Diinki's Retrofuture](https://github.com/diinki/diinki-retrofuture) ricing video and repo. The wallpaper I currently use is theirs as well, which looks so good I'm having a hard time finding another one to add 😅.
