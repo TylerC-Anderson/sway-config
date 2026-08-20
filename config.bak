@@ -1,0 +1,459 @@
+# Config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
+
+# Thin top-level config: include purpose-split parts in order
+include ~/.config/sway/conf.d/00-variables.conf
+include ~/.config/sway/conf.d/05-fonts.conf
+include ~/.config/sway/conf.d/10-env-and-agents.conf
+include ~/.config/sway/conf.d/20-autostart.conf
+include ~/.config/sway/conf.d/25-plugins.conf
+include ~/.config/sway/conf.d/30-input.conf
+include ~/.config/sway/conf.d/40-outputs.conf
+include ~/.config/sway/conf.d/50-appearance.conf
+include ~/.config/sway/conf.d/60-workspaces.conf
+include ~/.config/sway/conf.d/65-bindings-core.conf
+include ~/.config/sway/conf.d/66-bindings-workspaces.conf
+include ~/.config/sway/conf.d/67-bindings-utilities.conf
+include ~/.config/sway/conf.d/70-modes.conf
+include ~/.config/sway/conf.d/80-bar.conf
+
+# Keep any system includes last
+include /etc/sway/config.d/*
+
+
+
+
+
+
+
+########################################################
+### === ARCHIVE BELOW IN CASE REFORMAT BORKED IT === ###
+########################################################
+
+# ### Startup and auth agent
+# font pango:Maple Mono NF 10
+
+# # Start the auth agent
+# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec --no-startup-id sh -c ' eval $(gnome-keyring-daemon --login) eval $(gnome-keyring-daemon --start --components=secrets,ssh) export SSH_AUTH_SOCK'
+# # Start the network manager applet (clickable network changes), can comment out this line if you don't use network manager.
+# exec nm-applet
+# exec wl-paste --type text --watch cliphist store
+# exec wl-paste --type image --watch cliphist store
+
+# # Helper portals
+# exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+# exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=compositor_name
+
+# # Autostart Applications
+# exec obsidian
+# exec firefox
+
+# # Sets Numlock on for all devices. May cause issues with some devices
+# input type:keyboard xkb_numlock enabled
+
+# ### Variables
+# #
+# # Logo key. Use Mod1 for Alt.
+# set $mod Mod4
+# # Home row direction keys, like vim
+# set $left h
+# set $down j
+# set $up k
+# set $right l
+# # Your preferred terminal emulator
+# set $term kitty
+# # Your preferred application launcher
+# set $menu pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun
+
+
+# ### Plugins
+# exec autotiling-rs
+
+# ### Logout menu configs
+# set $waylogout waylogout \
+# 	--hide-cancel \
+# 	--screenshots \
+# 	--effect-blur=7x5 \
+# 	--indicator-thickness=20 \
+# 	--ring-color=888888aa \
+# 	--inside-color=88888866 \
+# 	--text-color=eaeaeaaa \
+# 	--line-color=00000000 \
+# 	--ring-selection-color=33cc33aa \
+# 	--inside-selection-color=33cc3366 \
+# 	--text-selection-color=eaeaeaaa \
+# 	--line-selection-color=00000000 \
+# 	--lock-command="swaylock -f -c /home/tyler/.config/swaylock/config" \
+# 	--logout-command="loginctl terminate-user $USER" \
+# 	--suspend-command="systemctl suspend" \
+# 	--hibernate-command="systemctl hibernate" \
+# 	--poweroff-command="systemctl poweroff" \
+# 	--reboot-command="systemctl reboot" \
+# 	--selection-label
+    
+#     # If you ever implement user switching, uncomment these two and replace the above --selection-label
+#     # --switch-user-command="echo 'Demo mode, switch-user command not configured. See man page.'" \
+# 	# --selection-label
+
+# # Your preferred File Explorer
+# set $file_explorer nautilus
+# bindsym $mod+ctrl+f exec $file_explorer   # sets file explorer launch keybinding
+
+# # Preferred Code editor
+# bindsym $mod+ctrl+c exec code
+
+# ### Input configuration
+# input type:pointer {
+#     accel_profile "flat"
+#     pointer_accel 0.15
+# }
+
+# ### Output configuration
+# #
+# # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# output * bg /home/tyler/Pictures/colorshift.png fill
+# #
+# # Monitor configuration:
+# #
+# # Positioned at the top-left origin.
+# output 'Acer Technologies SB220Q 0x82105859' resolution 1920x1080@74.973Hz position 0 720
+
+# # Positioned to the right of the Acer (x=1920) and 360px down (y=360).
+# output 'LG Electronics LG ULTRAGEAR 110NTQD78420' resolution 2560x1440@143.973Hz position 1920 960
+
+# # Sceptre (Right, Vertical)
+# # Uses native resolution plus a 90-degree transform.
+# output 'Sceptre Tech Inc Sceptre F22 Unknown' resolution 1920x1080@60.000Hz transform 270 position 4480 0
+# #
+# # You can get the names of your outputs by running: swaymsg -t get_outputs
+
+# ### Window configuration
+# gaps inner 13
+# gaps outer 7
+
+# default_border pixel 3px
+# default_floating_border pixel 3px
+
+# # ===================== !BLUR & FX ================================
+# # This WILL require SwayFX and not regular Sway.
+# blur enable
+# blur_passes 3
+# blur_radius 5
+# blur_noise 0
+
+# corner_radius 6
+
+
+# # Waybar blur
+
+# layer_effects "waybar" {
+#     blur enable;
+#     blur_xray enable;
+#     blur_ignore_transparent enable;
+#     shadows enable;
+# }
+
+# # =================================================================
+
+# #                       border  bg      text    ind     child border
+# client.focused          #d8cab8 #141216 #d8cab8 #d8cab8 #d8cab8
+# client.focused_inactive #7a53e8 #141216 #d8cab8 #7a53e8 #7a53e8
+# client.unfocused        #7a53e8 #141216 #d8cab8 #7a53e8 #7a53e8
+# client.urgent           #fcb167 #141216 #d8cab8 #fcb167 #fcb167
+# client.placeholder      #7a53e8 #141216 #d8cab8 #7a53e8 #7a53e8
+
+
+# ### Mouse Settings
+# focus_follows_mouse no
+# mouse_warping none
+
+# ### Idle configuration
+# #
+# # Example configuration:
+# #
+# # exec swayidle -w \
+# #          timeout 300 'swaylock -f -c 000000' \ 
+# #          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+# #          before-sleep 'swaylock -f -c 000000'
+# #
+# # This will lock your screen after 300 seconds of inactivity, then turn off
+# # your displays after another 300 seconds, and turn your screens back on when
+# # resumed. It will also lock your screen before your computer goes to sleep.
+
+# ### Input configuration
+# #
+# # Example configuration:
+# #
+# #   input type:touchpad {
+# #       dwt enabled
+# #       tap enabled
+# #       natural_scroll enabled
+# #       middle_emulation enabled
+# #   }
+# #
+# #   input type:keyboard {
+# #       xkb_layout "eu"
+# #   }
+# #
+# # You can also configure each device individually.
+# # Read `man 5 sway-input` for more information about this section.
+
+# ### Key bindings
+# #
+# # Basics:
+# #
+#     # Turn off computer
+#     # bindsym shift+alt+f4 exec poweroff
+
+#     # Start a terminal
+#     bindsym $mod+Return exec $term
+
+#     # Kill focused window
+#     bindsym $mod+q kill
+#     bindsym $mod+ctrl+shift+q [workspace=__focused__] kill
+
+#     # Start your launcher
+#     bindsym $mod+space exec $menu
+
+#     # Drag floating windows by holding down $mod and left mouse button.
+#     # Resize them with right mouse button + $mod.
+#     # Despite the name, also works for non-floating windows.
+#     # Change normal to inverse to use left mouse button for resizing and right
+#     # mouse button for dragging.
+#     floating_modifier $mod normal
+
+#     # Reload the configuration file
+#     bindsym $mod+Shift+ctrl+c reload
+
+#     # Exit sway (presents log-in/out and power application)
+#     bindsym $mod+Shift+e exec $waylogout
+
+# #
+# # Moving around:
+# #
+#     # Move your focus around
+#     bindsym $mod+$left focus left
+#     bindsym $mod+$down focus down
+#     bindsym $mod+$up focus up
+#     bindsym $mod+$right focus right
+#     # Or use $mod+[up|down|left|right]
+#     bindsym $mod+Left focus left
+#     bindsym $mod+Down focus down
+#     bindsym $mod+Up focus up
+#     bindsym $mod+Right focus right
+
+#     # Move the focused window with the same, but add Shift
+#     bindsym $mod+Shift+$left move left
+#     bindsym $mod+Shift+$down move down
+#     bindsym $mod+Shift+$up move up
+#     bindsym $mod+Shift+$right move right
+#     # Ditto, with arrow keys
+#     bindsym $mod+Shift+Left move left
+#     bindsym $mod+Shift+Down move down
+#     bindsym $mod+Shift+Up move up
+#     bindsym $mod+Shift+Right move right
+# #
+# # Workspaces:
+# #
+
+#     # Default Monitors
+
+#     # Left monitor, Acer
+#     workspace "left" output HDMI-A-2   
+#     workspace "ref" output HDMI-A-2   
+#     workspace "brws" output HDMI-A-2     
+    
+#     # Main monitor, LG
+#     workspace "midl" output DP-2       
+#     workspace "note" output DP-2       
+#     workspace "code" output DP-2       
+#     workspace "rsrch" output DP-2       
+#     workspace "vm" output DP-2       
+#     workspace "wtch" output DP-2       
+    
+#     # Right monitor, Sceptre
+#     workspace "rght" output HDMI-A-1   
+#     workspace "chat" output HDMI-A-1   
+#     workspace "llm" output HDMI-A-1    
+    
+
+
+#     # Default Application Workspaces
+#     assign [app_id="obsidian"] workspace "ref"
+#     assign [app_id="firefox"] workspace "brws"
+#     assign [app_id="code"] workspace "code"
+#     assign [app_id="obsidian"] workspace "ref"
+#     assign [app_id="vencord"] workspace "chat"
+#     assign [app_id="signal"] workspace "chat"
+#     assign [app_id="vmware"] workspace "vm"
+
+#     # Switch to workspace
+#     ## Left monitor, Acer
+#     ### left misc
+#     bindsym $mod+a workspace "left"                              
+#     ### References
+#     bindsym $mod+r workspace "ref"                               
+#     ### lookup/browser
+#     bindsym $mod+b workspace "brws"                              
+    
+#     ## Main monitor, LG
+#     ### middle misc
+#     bindsym $mod+s workspace "midl"                              
+#     ### Note-taking
+#     bindsym $mod+n workspace "note"                              
+#     ### coding workspace
+#     bindsym $mod+v workspace "code"                              
+#     ### research
+#     bindsym $mod+x workspace "rsrch"                             
+#     ### VM
+#     bindsym $mod+z workspace "vm"                                
+#     ### Watching,Rec
+#     bindsym $mod+w workspace "wtch"                              
+    
+#     ## Right monitor, Sceptre
+#     ### right misc
+#     bindsym $mod+d workspace "rght"                              
+#     ### chat
+#     bindsym $mod+c workspace "chat"                              
+#     ### LLM research
+#     bindsym $mod+t workspace "llm"                               
+
+#     # Move focused container to workspace  
+#     ## Left monitor, Acer
+#     ### left misc
+#     bindsym $mod+Shift+a move container to workspace "left"      
+#     ### References
+#     bindsym $mod+Shift+r move container to workspace "ref"       
+#     ### lookup/browser
+#     bindsym $mod+Shift+b move container to workspace "brws"      
+
+#     ## Main monitor, LG
+#     ### middle misc
+#     bindsym $mod+Shift+s move container to workspace "midl"      
+#     ### Note-taking
+#     bindsym $mod+Shift+n move container to workspace "note"      
+#     ### coding workspace
+#     bindsym $mod+Shift+v move container to workspace "code"      
+#     ### research
+#     bindsym $mod+Shift+x move container to workspace "rsrch"     
+#     ### VM
+#     bindsym $mod+Shift+z move container to workspace "vm"        
+#     ### Watching,Rec
+#     bindsym $mod+Shift+w move container to workspace "wtch"      
+
+#     ## Right monitor, Sceptre
+#     ### right misc
+#     bindsym $mod+Shift+d move container to workspace "rght"      
+#     ### chat
+#     bindsym $mod+Shift+c move container to workspace "chat"      
+#     ### LLM research
+#     bindsym $mod+Shift+t move container to workspace "llm"       
+    
+#     # Note: workspaces can have any name you want, not just numbers.
+#     # We just use 1-10 as the default.
+
+#     bindsym $mod+greater move workspace to output right  # note, this is win+shift+comma
+#     bindsym $mod+less move workspace to output left      # note, this is win+shift+period
+# #
+# # Layout stuff:
+# #
+#     # You can "split" the current object of your focus with
+#     # $mod+b or $mod+v, for horizontal and vertical splits
+#     # respectively.
+#     # bindsym $mod+shift+b splith
+#     # bindsym $mod+shift+v splitv
+
+#     # Switch the current container between different layout styles
+#     # bindsym $mod+s layout stacking
+#     # bindsym $mod+w layout tabbed
+#     # # bindsym $mod+e layout toggle split
+
+#     # # Make the current focus fullscreen
+#     # bindsym $mod+f fullscreen
+
+#     # # Toggle the current focus between tiling and floating mode
+#     # bindsym $mod+Shift+space floating toggle
+
+#     # Swap focus between the tiling area and the floating area
+#     # bindsym $mod+space focus mode_toggle
+
+#     # Move focus to the parent container
+#     # bindsym $mod+a focus parent
+# #
+# # Scratchpad:
+# #
+#     # Sway has a "scratchpad", which is a bag of holding for windows.
+#     # You can send windows there and get them back later.
+
+#     # Move the currently focused window to the scratchpad
+#     # bindsym $mod+Shift+minus move scratchpad
+
+#     # Show the next scratchpad window or hide the focused scratchpad window.
+#     # If there are multiple scratchpad windows, this command cycles through them.
+#     # bindsym $mod+minus scratchpad show
+# #
+# # Resizing containers:
+# #
+# mode "resize" {
+#     # left will shrink the containers width
+#     # right will grow the containers width
+#     # up will shrink the containers height
+#     # down will grow the containers height
+#     bindsym $left resize shrink width 15px
+#     bindsym $down resize grow height 15px
+#     bindsym $up resize shrink height 15px
+#     bindsym $right resize grow width 15px
+
+#     # Ditto, with arrow keys
+#     bindsym Left resize shrink width 15px
+#     bindsym Down resize grow height 15px
+#     bindsym Up resize shrink height 15px
+#     bindsym Right resize grow width 15px
+
+#     # Return to default mode
+#     bindsym Return mode "default"
+#     bindsym Escape mode "default"
+# }
+# bindsym $mod+plus mode "resize"
+# #
+# # Utilities:
+# #
+#     # Special keys to adjust volume via PulseAudio
+#     bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+#     bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+#     bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+#     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+#     # Special keys to adjust brightness via brightnessctl
+#     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
+#     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+#     # Special key to take a screenshot with grim
+#     bindsym Print exec grim
+
+#     # Clipboard History
+#     bindsym $mod+alt+v exec cliphist list | wofi --show dmenu | cliphist decode | wl-copy && sleep 0.1 && wtype -M ctrl v -m ctrl
+
+# # ===================== SCREENSHOTS ===============================
+# # There's a few different ways to handle screenshots in an
+# # easy way, I've decided to use a combination of three apps:
+# # grim, slurp, and swappy. Feel free to use a different screenshot
+# # solution.
+
+
+# bindsym $mod+Shift+ctrl+s exec "QT_QPA_PLATFORM=xcb flameshot gui"
+# # bindsym $mod+Shift+s exec grim -c -g "$(slurp)" - | swappy -f -
+
+# # =================================================================
+
+# #
+# # Status Bar:
+# #
+# # Read `man 5 sway-bar` for more information about this section.
+# bar {
+#     swaybar_command waybar
+# }
+
+# include /etc/sway/config.d/*
